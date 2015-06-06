@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
+ <script src="jquery-1.11.3.min.js"></script>
     <style type="text/css">
 
       html, body, #map-canvas { height: 400px; width: 500px; }
@@ -26,6 +26,38 @@
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
+    <script>
+        function getJSON(location){
+            $.ajax({
+              url: 'api.tiles.mapbox.com/v4/geocode/mapbox.places/'+location+'.json?access_token=pk.eyJ1IjoibGFncmFzc2EiLCJhIjoiMTcyNDlmMGZkMmNlNzdlNTA3ZmE1NTkxNjNhYTVkNDEifQ.fiQtfyZFmFLKtuPrsu7Q1g'
+              data: {
+              format: 'json'
+             },
+      error: function() {
+         console.log(error);
+      },
+      dataType: 'jsonp',
+      success: function(data) {
+         console.log(data)
+         //var $title = $('<h1>').text(data.talks[0].talk_title);
+         //var $description = $('<p>').text(data.talks[0].talk_description);
+         //$('#info')
+         //   .append($title)
+         //   .append($description);
+      },
+      type: 'GET'
+   });
+        }
+        function locationToLatLong(location) {
+            var location = document.getElementById("location").value ; 
+            var destination = document.getElementById("destination").value;
+            var output = json;
+            var parameters = location;
+            query = location
+            getJSON(location)
+            parameters = destination;
+       }
+    </script>
 </head>
 <body>
 
@@ -38,24 +70,43 @@
   <div class="row">
     <div class="col-sm-12">
       <h3>How it works </h3>
-      <p>Input your location and where you want to go, then we'll plot the happiest path for you</p>
     </div>
   </div>
   <div class="row">
     <div class ="col-sm-4">
       <h3>Location and Destination</h3>
-      <p> This is where the form will go</p>
+       
+      <form class="form-horizontal" role="form">
+          <div class="form-group">
+          <label class="control-label col-sm-2" for="location">From:</label>
+              <div class="col-sm-10">
+                  <input type="textarea" class="form-control" id="location" placeholder="Enter current location">
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-sm-2" for="destination">To:</label>
+              <div class="col-sm-10">
+                  <input type="textarea" class="form-control" id="destination" placeholder="Enter destination">
+              </div>
+          </div>
+         <div class="form-group">
+             <div class="col-sm-offset-2 col-sm-10">
+                 <button onclick="locationToLatLong()" type="submit" class="btn btn-default">Submit</button>
+             </div>
+         </div>
+     </form>
+
+
+      <p>Our algorithm will then calculate the happiest path for you </p>
     </div>
     <div class="col-sm-8">
       <h3>Map</h3>
       <p>This is where the map will go</p>
-      <div id = "map">
-      </div>
+      <div id="map-canvas"></div>
     </div>
   </div>
 </div>
 </body>
-  <div id="map-canvas"></div>
 
 </html>
 
