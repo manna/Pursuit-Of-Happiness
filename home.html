@@ -158,13 +158,14 @@ function algo(source, target, data){
         };
       var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
+    var points = [[42.3351, -71.1704],[42.3496,-71.0997],[42.3598,-71.0921]];
+     pathCoordinates = [];
+     for (var i = 0; i < points.length; i++) {
+          pathCoordinates.push(new google.maps.LatLng(points[i][0], points[i][1]));
+     }
 
-  var pathCoordinates = [
-    new google.maps.LatLng(42.3351, -71.1704),
-    new google.maps.LatLng(42.3496,-71.0997),
-    new google.maps.LatLng(42.3598,-71.0921)
-  ];
-  
+
+
   var happyPath = new google.maps.Polyline({
     path: pathCoordinates,
     geodesic: true,
