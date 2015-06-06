@@ -152,7 +152,30 @@ function algo(source, target, data){
 }
 
     function displayOnMap() {
+    var mapOptions = {
+          center: { lat: 42.3061, lng: -71.0589},
+          zoom: 8
+        };
+      var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  var pathCoordinates = [
+    new google.maps.LatLng(42.3351, -71.1704),
+    new google.maps.LatLng(42.3496,-71.0997),
+    new google.maps.LatLng(42.3598,-71.0921)
+  ];
+  
+  var happyPath = new google.maps.Polyline({
+    path: pathCoordinates,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
+  happyPath.setMap(map);
     }
+
+    
 
 
 
