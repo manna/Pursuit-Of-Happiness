@@ -28,8 +28,17 @@
     </script>
     <script src = "http://maps.google.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
+        function process() {
+            var coordinates = locationToLatLong()
+            var loc = coordinates[0]
+            var des = coordinates[1]
+            var data = [80,80,2] //get from database
+            var points = algo(loc, des, data);
+            displayOnMap(points)
+            
+        }
 
-        function locationToLatLong(location) {
+        function locationToLatLong() {
             var location = document.getElementById("location").value ; 
             var destination = document.getElementById("destination").value;
             var xmlHttp = new XMLHttpRequest(); 
@@ -98,6 +107,7 @@ function algo(source, target, data){
     /*----------------------------------*/
     /* Data is now topologically sorted */
     // console.log("topologically sorted: ", data);
+
     /*----------------------------------*/
     var w = function(i,j){
         var a = data[i];
@@ -141,7 +151,8 @@ function algo(source, target, data){
     return path;
 }
 
-
+    function displayOnMap() {
+    }
 
 
 
@@ -181,7 +192,7 @@ function algo(source, target, data){
           </div>
          <div class="form-group">
              <div class="col-sm-offset-2 col-sm-10">
-                 <button onclick="locationToLatLong()" type="submit" class="btn btn-default">Submit</button>
+                 <button onclick="process()" type="submit" class="btn btn-default">Submit</button>
              </div>
          </div>
      </form>
