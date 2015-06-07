@@ -117,7 +117,7 @@ var datapoints = relevantDataPoints2 /*.concat(huge_set) */;
     //datapoints = $.csv.toArray(csv);
   if(active){
 		  active = false;
-	    var points = alg(coordinates[0],coordinates[1], datapoints);
+	    var points = alg(coordinates[0],coordinates[1], datapoints, adventure);
 	    displayOnMap(points);
   }
 }	
