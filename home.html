@@ -32,9 +32,12 @@
     </script>
     <script type="text/javascript">
        $( document ).ready(function() {
-        numClicks = 0;
-        $("#second").hide();
-         console.log( "ready!" );
+            numClicks = 0;
+           $("#second").hide();
+            console.log( "ready!" );
+            $('#map-canvas').live('click', '#map-canvas', function(){
+               console.log("map click recognized");
+            }
        });
       function initialize() {
          getMap();
@@ -85,16 +88,21 @@
         function process() {
             var coordinates = locationToLatLong()
             coordinates = clicked_coordinates;
+            console.log(coordinates);
             var loc = coordinates[0]
             var des = coordinates[1]
             var URL = "/"+loc[0]+"/"+loc[1]+"/"+des[0]+"/"+des[1]+""
+            //var URL = "/43/74/42/75"
             $.get(URL, function(data)
             {
-                var points = data;
+                var points = JSON.parse("["+data+"]");
+                console.log(data);
                 displayOnMap(points)
              });
   
-            
+            location.reload(); 
+            console.log('points');
+            console.log(points);
         }
 
         function locationToLatLong() {
@@ -117,13 +125,7 @@
 	
 
     function displayOnMap(points) {
-    var mapOptions = {
-          center: { lat: 42.3061, lng: -71.0589},
-          zoom: 8
-        };
-      var map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-
+        var map = getMap()
     //var points = [[42.3351, -71.1704],[42.3496,-71.0997],[42.3598,-71.0921]];
     var pathCoordinates = [];
     for (var i = 0; i < points.length; i++) {
@@ -174,13 +176,6 @@
 
 
 
- <div id="map-canvas2"></div>
- <button  type="button" id = "first" style= "width:900px; height:400px; color: black; background: rgba(192,192,200,0.85);" position = "relative"  class="btn btn-primary btn-lg">Click your current location</button> 
- <button type="button" id = "second" style= "font-size:30px; color: black; background: rgba(192,192,200,0.85);" position = "relative"  class="btn btn-primary btn-lg">Click your ultimate destination</button> 
-  <div class="row">
-    <div class="col-sm-12">
-    </div>
-  </div>
 </body>
 
 </html>
