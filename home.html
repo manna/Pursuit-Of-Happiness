@@ -84,12 +84,26 @@
       //window.onload = addClickListener;
          
         function process() {
-            var coordinates = locationToLatLong()
-            coordinates = clicked_coordinates;
+            var coordinates = clicked_coordinates;
             console.log(coordinates);
             var loc = coordinates[0]
             var des = coordinates[1]
-            var data=[42, -71, 900000000000000];
+            data = []                         
+               var extract = function(raw){                      
+               $(document).ready(function () {        
+                 $.ajax({                                                                   
+                   type: "GET",                                 
+                   url: 'https://lagrassa.scripts.mit.edu/Pursuit-Of-Happiness/cached_tweets.csv',             
+                   dataType: "csv",                                              
+                   success: function (raw) {
+                   for (row in raw) {                   
+                       data.push([row[0], row[1], row[5]])                                              
+                   }}                                                                 
+                });                                             
+              });                                                   
+       }                                                                     
+
+            console.log(data);
             var points = alg(coordinates[0],coordinates[1], data)
             displayOnMap(points);
             return;

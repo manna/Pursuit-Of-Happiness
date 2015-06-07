@@ -94,4 +94,3 @@ var alg = function(source, target, data){
     return path;
 }
 
-console.log("Path: ", algo([0.,0.], [100.,100.], [[50, 75, 1], [80, 80, 2]]));
