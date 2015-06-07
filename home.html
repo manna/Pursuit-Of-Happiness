@@ -41,6 +41,11 @@
                   location.reload();
                 }
            });
+           $('#adv').keypress(function(e){
+                 if (e.keyCode == 13) {
+                     adventure = $('#adv').val()
+                 }
+             });
        });
       function initialize() {
          getMap();
@@ -153,10 +158,13 @@ var datapoints = relevantDataPoints2 /*.concat(huge_set) */;
    <div id="map-canvas">   </div>
 
    <div id="over_map">
-
  <button  type = "button"  id = "first" style= " width:900px; font-size:33; z-index:9; color: black; background: rgba(192,192,200,0.7);" position = "relative"  class="btn btn-primary btn-lg">Click your current location</button>
 
  <button  type = "button"  id = "second" style= " width:900px; font-size:33; z-index:9; color: black; background: rgba(192,192,200,0.7);" position = "relative"  class="btn btn-primary btn-lg">Click your ultimate destination</button>
+<div class="form-group">
+  <label for="usr">Indicate your adventurousness from 1-10:</label>
+  <input style = "width:200px" type="text" id = "adv" class="form-control">
+</div>
    </div>
 </div>
 
