@@ -36,6 +36,7 @@ var alg = function(source, target, datapoints){
     source.push(1); //Neutral score
     target.push(1); //Neutral score
 
+    console.log(data.length)
     //Remove out of range items:
     while(data.length>0 && compare(data[0], source) < 0) {
         data.shift();
@@ -43,12 +44,6 @@ var alg = function(source, target, datapoints){
     while(data.length>0 && compare(data[data.length-1], target) > 0){
         data.pop();
     }
-    //Prune, to decrease width:
-    // for (var i = data.length-1; i >=0; i--){
-    //     if Math.abs(error(data[i])) > Math.abs(distance/2){
-    //         data.remove(i);
-    //     }
-    // }
 
     //Prepend Source vertex.
     data.unshift(source);
