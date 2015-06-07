@@ -12,16 +12,13 @@ from happirithm import *
 
 @app.route("/<s_lat>/<s_lon>/<t_lat>/<t_lon>")
 def hello(s_lat, s_lon, t_lat, t_lon):
-    source = [s_lat, s_lon]
+    source = [float(s_lat), float(s_lon)]
     print "source ", source
-    target = [t_lat, t_lon]
+    target = [float(t_lat), float(t_lon)]
     print "target ", target
-    db = MySQLdb.connect("pursuit-of-happiness.cwouww8djnhv.us-west-2.rds.amazonaws.com","root","h4ppiest", "pursuit_of_happiness" )
-    print "db ",db
-    cur= db.cursor()
-    print "cur ",cur
-    sql = "SELECT longitude,latitude, score FROM boston"# WHERE score = 1"
-    print "sql ",sql
+    # db = MySQLdb.connect("pursuit-of-happiness.cwouww8djnhv.us-west-2.rds.amazonaws.com","root","h4ppiest", "pursuit_of_happiness" )
+    # cur= db.cursor()
+    # sql = "SELECT longitude,latitude, score FROM boston"# WHERE score = 1"
     #print "number of tweets: ", cur.execute(sql)
     # content = []
     # for x in cur.fetchall():
