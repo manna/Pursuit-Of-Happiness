@@ -4,7 +4,7 @@
 
 var alg = function(source, target, datapoints, max_points){
     max_points = max_points || 3;
-    
+
     var data = datapoints.slice(0);
     solution = [0];
     direction = [target[0]-source[0], target[1]-source[1]];
@@ -59,7 +59,7 @@ var alg = function(source, target, datapoints, max_points){
     var w = function(i,j){
         var a = data[i];
         var b = data[j];
-        return Math.sqrt(Math.pow(b[0]-a[0], 2) + Math.pow(b[1]-a[1], 2) + error(b)) / Math.pow(b[2], 4); 
+        return Math.sqrt(Math.pow(b[0]-a[0], 2) + Math.pow(b[1]-a[1], 2) + error(b)) / b[2]; 
     }
     memo = {};
     child = {};
