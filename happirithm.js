@@ -1,6 +1,20 @@
 /* source :: [Lat, Long] */
 /* target :: [Lat, Long] */
 /* data :: [Lat, Long, Score] */
+data = []
+var extract = function(raw){
+    $(document).ready(function () {
+    $.ajax({
+        type: "GET",
+        url: 'D:\Docs\Desktop\cached_tweets.csv',
+        dataType: "csv",
+        success: function (raw) {
+            for row in raw:
+                data.push([row[0], row[1], row[5]])
+        }
+    });
+});
+}
 
 var algo = function(source, target, data){
     solution = [0];
@@ -55,7 +69,7 @@ var algo = function(source, target, data){
     var w = function(i,j){
         var a = data[i];
         var b = data[j];
-        return Math.sqrt(Math.pow(b[0]-a[0], 2) + Math.pow(b[1]-a[1], 2)) / b[2] + error(b);
+        return (Math.sqrt(Math.pow(b[0]-a[0], 2) + Math.pow(b[1]-a[1], 2))  + error(b)) / (Math.pow(b[2], 2))
     }
     memo = {};
     child = {};

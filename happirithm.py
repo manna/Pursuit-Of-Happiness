@@ -50,7 +50,7 @@ def algo(source, target, data):
     def w(i,j):
         a = data[i]
         b = data[j]
-        return math.sqrt(math.pow(b[0]-a[0], 2) + math.pow(b[1]-a[1], 2)) / b[2] + error(b)
+        return (math.sqrt(math.pow(b[0]-a[0], 2) + math.pow(b[1]-a[1], 2))  + error(b)) / (math.pow(b[2], 2))
     memo = {}
     child = {}
     def shortest(i):

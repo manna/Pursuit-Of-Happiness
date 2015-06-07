@@ -56,7 +56,7 @@
       function addClickListener() {
         var map = getMap();
         console.log('added');
-           google.maps.event.addListener(map, 'click', function(event){                                                                                                                                                          
+           google.maps.event.addListener(map, 'click', function(event){    
            console.log('click event recognized by map');
 
        if (numClicks % 2 == 0 ) {
@@ -91,10 +91,10 @@
             $.get(URL, function(data)
             {
                 var points = data;
-                displayOnMap(points)
+                displayOnMap(points);
              });
   
-            
+            location.reload();
         }
 
         function locationToLatLong() {
@@ -113,7 +113,6 @@
             console.log(destinationCoordinates)
             return [locationCoordinates,destinationCoordinates] 
        }
-       
 	
 
     function displayOnMap(points) {
@@ -143,10 +142,6 @@
      });
     happyPath.setMap(map);
     }
-
-    
-
-
 
 
  

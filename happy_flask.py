@@ -36,8 +36,9 @@ def getPath(s_lat, s_lon, t_lat, t_lon):
     #db.close()
     return str(path)
 
-@app.rout("/")
+@app.route("/")
 def index():
+    print app.send_static_file('home.html')
     return app.send_static_file('home.html')
 
 if __name__ == "__main__":
