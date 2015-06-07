@@ -16,7 +16,7 @@ var extract = function(raw){
 });
 }
 
-var algo = function(source, target, data){
+var alg = function(source, target, data){
     solution = [0];
     direction = [target[0]-source[0], target[1]-source[1]];
     var magnitude = function(v){
@@ -108,4 +108,3 @@ var algo = function(source, target, data){
     return path;
 }
 
-console.log("Path: ", algo([0.,0.], [100.,100.], [[50, 75, 1], [80, 80, 2]]));
