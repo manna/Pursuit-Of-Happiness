@@ -105,22 +105,6 @@
             //console.log(points);
         }
 
-        function locationToLatLong() {
-            console.log("This function is not being used");
-            return null
-            var location = document.getElementById("location").value ; 
-            var destination = document.getElementById("destination").value;
-            var xmlHttp = new XMLHttpRequest(); 
-            xmlHttp.open("GET", "amanna.pythonanywhere.com/location="+location+"", true);
-            xmlHttp.send(null)
-            var locationCoordinates = xmlHttp.responseText
-            var xmlHttp = new XMLHttpRequest(); 
-            xmlHttp.open("GET", "amanna.pythonanywhere.com/location="+destination+"", true);
-            xmlHttp.send(null)
-            var destinationCoordinates = xmlHttp.responseText
-            console.log(destinationCoordinates)
-            return [locationCoordinates,destinationCoordinates] 
-       }
        
 	
 
