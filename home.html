@@ -28,6 +28,7 @@
     </style>
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxif6DsCvG0_9W3yYk2XQ4D1NN9VWg2wE">
+
     </script>
     <script type="text/javascript">
        $( document ).ready(function() {
@@ -1352,6 +1353,9 @@ var datapoints = relevantDataPoints2.concat(relevantDataPoints) /*.concat(huge_s
     //datapoints = $.csv.toArray(csv);
   if(active){
 		  active = false;
+            if (typeof(adventure) =="undefined) {
+                adventure =3;
+            }
 	    var points = alg(coordinates[0],coordinates[1], datapoints, adventure);
 	    displayOnMap(points);
   }
