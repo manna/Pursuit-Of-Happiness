@@ -41,6 +41,9 @@
       
       function addClickListener(map) {
            google.maps.event.addListener(map, 'click', function(event){                                                                                                                                                          
+       if (numClicks >=2) {
+           process();
+       }
        if (numClicks % 2 == 0 ) {
            startLat = event.latLng.lat();
            startLong = event.latLng.lng()
@@ -72,6 +75,8 @@
         }
 
         function locationToLatLong() {
+            console.log("This function is not being used");
+            return null
             var location = document.getElementById("location").value ; 
             var destination = document.getElementById("destination").value;
             var xmlHttp = new XMLHttpRequest(); 
