@@ -87,9 +87,13 @@
             coordinates = clicked_coordinates;
             var loc = coordinates[0]
             var des = coordinates[1]
-            var data = [80,80,2] //get from database
-            var points = algo(loc, des, data);
-            displayOnMap(points)
+            var URL = "/"+loc[0]+"/"+loc[1]+"/"+des[0]+"/"+des[1]+""
+            $.get(URL, function(data)
+            {
+                var points = data;
+                displayOnMap(points)
+             });
+  
             
         }
 
