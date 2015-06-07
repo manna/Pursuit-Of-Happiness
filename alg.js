@@ -3,7 +3,6 @@
 /* data :: [Lat, Long, Score] */
 
 var alg = function(source, target, datapoints){
-    console.log("hi",datapoints);
     var data = datapoints.slice(0);
     solution = [0];
     direction = [target[0]-source[0], target[1]-source[1]];
@@ -44,6 +43,12 @@ var alg = function(source, target, datapoints){
     while(data.length>0 && compare(data[data.length-1], target) > 0){
         data.pop();
     }
+    //Prune, to decrease width:
+    // for (var i = data.length-1; i >=0; i--){
+    //     if Math.abs(error(data[i])) > Math.abs(distance/2){
+    //         data.remove(i);
+    //     }
+    // }
 
     //Prepend Source vertex.
     data.unshift(source);
