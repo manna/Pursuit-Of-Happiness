@@ -38,7 +38,6 @@ var alg = function(source, target, datapoints, max_points){
     source.push(1); //Neutral score
     target.push(1); //Neutral score
 
-    console.log(data.length)
     //Remove out of range items:
     while(data.length>0 && compare(data[0], source) < 0) {
         data.shift();
@@ -64,7 +63,6 @@ var alg = function(source, target, datapoints, max_points){
     memo = {};
     child = {};
     var shortest = function(i){
-        console.log("i", i);
         if (i >= data.length-1){
             return 0;//Reached Target.
         }
@@ -89,7 +87,6 @@ var alg = function(source, target, datapoints, max_points){
         return memo[i];
     }
 
-    console.log(shortest(0));
     root = 0;
     path = [data[root]];
     while (root < data.length-1){
