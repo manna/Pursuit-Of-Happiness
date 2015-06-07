@@ -8,6 +8,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
     <style type="text/css">
 
       html, body, #map-canvas { height: 400px; width: 500px; }
@@ -16,6 +17,7 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxif6DsCvG0_9W3yYk2XQ4D1NN9VWg2wE">
     </script>
     <script type="text/javascript">
+      numClicks = 0
       function initialize() {
         var mapOptions = {
           center: { lat: 42.3061, lng: -71.0589},
@@ -23,13 +25,44 @@
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
+        addClickListener(map);
       }
       google.maps.event.addDomListener(window, 'load', initialize);
+      //Then adds the listener
+
+        var mapOptions = {
+          center: { lat: 42.3061, lng: -71.0589}, 
+          zoom: 8 
+        };
+
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+
+      
+      function addClickListener(map) {
+           google.maps.event.addListener(map, 'click', function(event){                                                                                                                                                          
+       if (numClicks % 2 == 0 ) {
+           startLat = event.latLng.lat();
+           startLong = event.latLng.lng()
+           numClicks++;
+       } else if (numClicks % 2 == 1) {
+           endLat = event.latLng.lat();
+           endLong = event.latLng.lng();
+           numClicks++;
+           clicked_coordinates =[[startLat,startLong],[endLat,endLong]]
+           console.log(clicked_coordinates)
+          }
+         }); 
+      } 
+
     </script>
     <script src = "http://maps.google.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
+      //window.onload = addClickListener;
+     
         function process() {
             var coordinates = locationToLatLong()
+            coordinates = clicked_coordinates;
             var loc = coordinates[0]
             var des = coordinates[1]
             var data = [80,80,2] //get from database
@@ -158,22 +191,25 @@ function algo(source, target, data){
         };
       var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
+
     var points = [[42.3351, -71.1704],[42.3496,-71.0997],[42.3598,-71.0921]];
-     pathCoordinates = [];
-     for (var i = 0; i < points.length; i++) {
+    var pathCoordinates = [];
+    for (var i = 0; i < points.length; i++) {
           pathCoordinates.push(new google.maps.LatLng(points[i][0], points[i][1]));
-     }
+    }
+    var fullBounds = new google.maps.LatLngBounds();
+    fullBounds.extend(pathCoordinates[0]);
+    fullBounds.extend(pathCoordinates[points.length-1]);
+    map.fitBounds(fullBounds);
 
-
-
-  var happyPath = new google.maps.Polyline({
-    path: pathCoordinates,
-    geodesic: true,
-    strokeColor: '#FF0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  });
-  happyPath.setMap(map);
+    var happyPath = new google.maps.Polyline({
+      path: pathCoordinates,
+      geodesic: true,
+      strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+     });
+    happyPath.setMap(map);
     }
 
     
