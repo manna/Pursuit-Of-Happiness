@@ -3,15 +3,30 @@
 <head>
   <title>Pursuit of Happiness</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=2.0, user-scalable=no">
+
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+
     <style type="text/css">
 
-      html, body, #map-canvas { height: 400px; width: 500px; }
+    html, body, #wrapper{
+    height: 100%;
+    width: 100%;
+     }
+    #map-canvas{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index : -1;
+    }
     </style>
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxif6DsCvG0_9W3yYk2XQ4D1NN9VWg2wE">
@@ -228,47 +243,14 @@ function algo(source, target, data){
 <body>
 
 
- <div class="container">
-  <div class="jumbotron">
-    <h1>Pursuit of Happiness</h1>
-    <p>Make friends on the happiest route!</p>
+<div class="container">
+  <div position = "absolute" bottom=400 left= 0; z-index = "700" style="height:100px; width = 50px; background: rgba(192, 192, 200, 0.7);" class="jumbotron">
+    <h2>Pursuit of Happiness</h2>
   </div>
+  
+  <div id="map-canvas"></div>
   <div class="row">
     <div class="col-sm-12">
-      <h3>How it works </h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class ="col-sm-4">
-      <h3>Location and Destination</h3>
-       
-      <form class="form-horizontal" role="form">
-          <div class="form-group">
-          <label class="control-label col-sm-2" for="location">From:</label>
-              <div class="col-sm-10">
-                  <input type="textarea" class="form-control" id="location" placeholder="Enter current location">
-              </div>
-          </div>
-          <div class="form-group">
-              <label class="control-label col-sm-2" for="destination">To:</label>
-              <div class="col-sm-10">
-                  <input type="textarea" class="form-control" id="destination" placeholder="Enter destination">
-              </div>
-          </div>
-         <div class="form-group">
-             <div class="col-sm-offset-2 col-sm-10">
-                 <button onclick="process()" type="submit" class="btn btn-default">Submit</button>
-             </div>
-         </div>
-     </form>
-
-
-      <p>Our algorithm will then calculate the happiest path for you </p>
-    </div>
-    <div class="col-sm-8">
-      <h3>Map</h3>
-      <p>This is where the map will go</p>
-      <div id="map-canvas"></div>
     </div>
   </div>
 </div>
