@@ -13,9 +13,16 @@
   </script>
   <style media="screen" type="text/css">
     body {
+      background-image: "images/20141026_141722.jpg"
+      background-attachment: fixed;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    body {
       font-family: 'Raleway', sans-serif;
     }
-    
+
     .container {
       color: white;
     }
@@ -23,9 +30,15 @@
     .jumbotron {
       color: black;
     }
+
+    .box {
+      background-color: rgba(0, 0, 0, .2);
+      padding: 5px;
+      border-radius: 10px;
+    }
   </style>
 </head>
-<body background='tree.jpg'>
+<body background='images/20141026_141722.jpg'>
 
 <div class="container">
   <div style = "opacity:0.5"class="jumbotron">
@@ -33,20 +46,24 @@
   </div>
   <div class="row">
     <div class="col-sm-6">
-      <h1>Why pursue happiness?</h1>
-      <h4><i>"Happiness is the meaning and purpose of life, the whole aim and end of human existence." -Aristotle</i></h4>
+      <div class="box">
+        <h1>Why pursue happiness?</h1>
+        <h4><i>"Happiness is the meaning and purpose of life, the whole aim and end of human existence." -Aristotle</i></h4>
 <img src="images/Aristotle.png" class="img-circle"  width="304" height="236" z-index = 3>
 
-      <h4>Why chase merely the fastest way to get somewhere when you can aspire for the happiest route? Some say life is too short
-        to indulge, but it is the shortness of life that makes every walk every journey all the more precious?</i></h4>
-      <h4>Don't let life pass you by! Let us help you find a happier way to travel.</h4>
-      <button onclick = "window.location.href='home.html'" style = 'width:500px' type = "button" class = "btn btn-primary btn-lg">LAUNCH</button>    
+        <h4>Why chase merely the fastest way to get somewhere when you can aspire for the happiest route? Some say life is too short
+        for indulgence, but isn't it the shortness of life that makes every walk and every journey all the more precious?</i></h4>
+        <h4>Don't let life pass you by! Let us help you find a happier way to travel.</h4>
+      </div>
     </div>
     <div class="col-sm-6">
-      <h1>How did we help you pursue happiness?</h1>
-      <h4>By looking at Twitter data from people around you, we constructed a path where you meet the most happy people</h4>
-      <h4>To make sure you don't have to out of your way, our app will find a happy path for you to a place you need to go to anyway</h4>
-      <h4>Go out, explore, and meet other happy people</h4>
+      <div class="box">
+        <h1>How do we help you pursue happiness?</h1>
+        <h4>By looking at Twitter data from people around you, we construct a path populated by the happiest tweets and the happiest people.</h4>
+        <h4>To make sure you don't have to go out of your way, our app will find a happy path for you to a place you need to go to anyway.</h4>
+        <h4>Go out, explore, and meet other happy people!</h4>
+        <button onclick = "window.location.href='home.html'" style = 'width:500px' type = "button" class = "btn btn-primary btn-lg">LAUNCH</button>
+      </div>    
     </div>
   </div>
 </div>
