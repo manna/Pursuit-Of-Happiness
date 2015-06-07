@@ -81,4 +81,4 @@ def algo(source, target, data):
     return path;
 
 
-print("Path: " + str(algo([0.,0.], [100.,100.], [[50, 75, 1], [80, 80, 2]])));
+#print("Path: " + str(algo([0.,0.], [100.,100.], [[50, 75, 1], [80, 80, 2]])));
