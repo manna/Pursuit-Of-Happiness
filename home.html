@@ -21,7 +21,7 @@
      }
     #map-canvas{
         position: absolute;
-        top: 0;
+        top: 40pt;
         left: 0;
         bottom: 0;
         right: 0;
@@ -35,18 +35,11 @@
        $( document ).ready(function() {
         numClicks = 0;
         $("#second").hide();
-        $( "#first" ).click(function() {
-           addClickListener();
-           $("#second").show();
-           $("#first").hide();
-        });
-        $( "#second" ).click(function() {
-          addClickListener();
-        });
          console.log( "ready!" );
        });
       function initialize() {
          getMap();
+         addClickListener();
       }
       google.maps.event.addDomListener(window, 'load', initialize); 
       addClickListener();
@@ -66,21 +59,22 @@
         console.log('added');
            google.maps.event.addListener(map, 'click', function(event){                                                                                                                                                          
            console.log('click event recognized by map');
-       if (numClicks >=2) {
-           process();
-       }
+
        if (numClicks % 2 == 0 ) {
            startLat = event.latLng.lat();
            startLong = event.latLng.lng()
            numClicks++;
+           $("#second").show();
+           $("#first").hide();
        } else if (numClicks % 2 == 1) {
            endLat = event.latLng.lat();
            endLong = event.latLng.lng();
            numClicks++;
            clicked_coordinates =[[startLat,startLong],[endLat,endLong]]
            console.log(clicked_coordinates)
+           $('#second').html("Here is the happiest route");
+           process();
           }
-         //google.maps.event.clearListeners(map, 'click');
          }); 
       } 
 
@@ -255,8 +249,8 @@ function algo(source, target, data){
 
 
 <div class="container">
- <button type="button" id = "first" style= "z-index:7; color: black; background: rgba(192,192,200,0.7);" position = "absolute"  class="btn btn-primary btn-lg">Find your current location. Click here, then click your location once you have located it</button> 
- <button type="button" id = "second" style= " z-index:7; color: black; background: rgba(192,192,200,0.7);" position = "absolute"  class="btn btn-primary btn-lg">Find your destination. Click here, then click your destination once you have located it</button> 
+ <button type="button" id = "first" style= "z-index:2; color: black; background: rgba(192,192,200,0.7);" position = "absolute"  class="btn btn-primary btn-lg">Find your current location</button> 
+ <button type="button" id = "second" style= " z-index:2; color: black; background: rgba(192,192,200,0.7);" position = "absolute"  class="btn btn-primary btn-lg">Find your destination</button> 
   <div id="map-canvas"></div>
   <div class="row">
     <div class="col-sm-12">
