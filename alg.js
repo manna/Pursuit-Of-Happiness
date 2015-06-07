@@ -72,7 +72,7 @@ var alg = function(source, target, datapoints){
         var best_length = Number.POSITIVE_INFINITY;
         var best_j = null;
         var j;
-        for (j = i+1; j < data.length ; j++) { 
+        for (j = i+1; j < data.length && j < i+5 ; j++) { 
             var cur_length = shortest(j) + w(i, j);
             if(cur_length < best_length){
                 best_length = cur_length;
