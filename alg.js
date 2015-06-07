@@ -2,7 +2,7 @@
 /* target :: [Lat, Long] */
 /* data :: [Lat, Long, Score] */
 
-var algo = function(source, target, data){
+var alg = function(source, target, data){
     solution = [0];
     direction = [target[0]-source[0], target[1]-source[1]];
     var magnitude = function(v){
