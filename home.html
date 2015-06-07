@@ -35,9 +35,6 @@
             numClicks = 0;
            $("#second").hide();
             console.log( "ready!" );
-            $('#map-canvas').live('click', '#map-canvas', function(){
-               console.log("map click recognized");
-            }
        });
       function initialize() {
          getMap();
@@ -93,16 +90,20 @@
             var des = coordinates[1]
             var URL = "/"+loc[0]+"/"+loc[1]+"/"+des[0]+"/"+des[1]+""
             //var URL = "/43/74/42/75"
-            $.get(URL, function(data)
+
+            points = [[42.3351, -71.1704],[42.3496,-71.0997],[42.3598,-71.0921]];
+            displayOnMap(points);
+            return;
+            /*$.get(URL, function(data)
             {
                 var points = JSON.parse("["+data+"]");
                 console.log(data);
                 displayOnMap(points)
-             });
+             });*/
   
-            location.reload(); 
-            console.log('points');
-            console.log(points);
+            //location.reload(); 
+            //console.log('points');
+            //console.log(points);
         }
 
         function locationToLatLong() {
