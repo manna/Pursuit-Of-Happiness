@@ -189,7 +189,7 @@ function algo(source, target, data){
     return path;
 }
 
-    function displayOnMap() {
+    function displayOnMap(points) {
     var mapOptions = {
           center: { lat: 42.3061, lng: -71.0589},
           zoom: 8
@@ -197,7 +197,7 @@ function algo(source, target, data){
       var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
-    var points = [[42.3351, -71.1704],[42.3496,-71.0997],[42.3598,-71.0921]];
+    //var points = [[42.3351, -71.1704],[42.3496,-71.0997],[42.3598,-71.0921]];
     var pathCoordinates = [];
     for (var i = 0; i < points.length; i++) {
           pathCoordinates.push(new google.maps.LatLng(points[i][0], points[i][1]));
