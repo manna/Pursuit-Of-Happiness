@@ -1359,11 +1359,10 @@
     //datapoints = arr.chunk(3);            
     //datapoints = $.csv.toArray(csv);
   if(active){
-		  active = false;
-
-            if (typeof(adventure) =="undefined") {
-                adventure =3;
-            }
+		active = false;
+        if (typeof(adventure) =="undefined") {
+            adventure =3;
+        }
 	    var points = alg(coordinates[0],coordinates[1], datapoints, adventure);
 	    displayOnMap(points);
   }
