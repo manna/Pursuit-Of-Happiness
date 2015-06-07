@@ -39,13 +39,15 @@
            $('#second').click(function() {
                console.log('happens')
                if (numClicks  == 2) {
-                  location.reload();
+                  numClicks = 0;
+                  $('#second').hide();
+                  $('#second').html('Select your ultimate destination...again');
+                  $('#first').show();
+                  
                 }
            });
            $('#adv').keypress(function(e){
-                 if (e.keyCode == 13) {
-                     adventure = parseInt($('#adv').val());
-                 }
+                adventure = parseInt($('#adv').val());
              });
        });
       function initialize() {
@@ -118,7 +120,7 @@ var datapoints = relevantDataPoints2 /*.concat(huge_set) */;
     //datapoints = $.csv.toArray(csv);
   if(active){
 		  active = false;
-            if (typeof(adventure) =="undefined) {
+            if (typeof(adventure) =="undefined") {
                 adventure =3;
             }
 	    var points = alg(coordinates[0],coordinates[1], datapoints, adventure);
