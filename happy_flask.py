@@ -3,15 +3,15 @@
 
 # In[10]:
 
-from flask import Flask
-app = Flask(__name__)
+from flask import Flask, request
+app = Flask(__name__, static_url_path='')
 
 import MySQLdb
 import csv
 from happirithm import *
 
 @app.route("/<s_lat>/<s_lon>/<t_lat>/<t_lon>")
-def hello(s_lat, s_lon, t_lat, t_lon):
+def getPath(s_lat, s_lon, t_lat, t_lon):
     source = [float(s_lat), float(s_lon)]
     target = [float(t_lat), float(t_lon)]
     # db = MySQLdb.connect("pursuit-of-happiness.cwouww8djnhv.us-west-2.rds.amazonaws.com","root","h4ppiest", "pursuit_of_happiness" )
@@ -35,5 +35,10 @@ def hello(s_lat, s_lon, t_lat, t_lon):
     path = algo(source, target, data)
     #db.close()
     return str(path)
+
+@app.rout("/")
+def index():
+    return app.send_static_file('home.html')
+
 if __name__ == "__main__":
     app.run()
