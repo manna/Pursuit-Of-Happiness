@@ -2,8 +2,9 @@
 /* target :: [Lat, Long] */
 /* data :: [Lat, Long, Score] */
 
-var alg = function(source, target, datapoints){
-    console.log(datapoints);
+var alg = function(source, target, datapoints, max_points){
+    max_points = max_points || 3;
+
     var data = datapoints.slice(0);
     solution = [0];
     direction = [target[0]-source[0], target[1]-source[1]];
@@ -57,8 +58,7 @@ var alg = function(source, target, datapoints){
     var w = function(i,j){
         var a = data[i];
         var b = data[j];
-        //return (Math.sqrt(Math.pow(b[0]-a[0], 2) + Math.pow(b[1]-a[1], 2))  
-        return  error(b) / Math.pow(b[2], 2);
+        return Math.sqrt(Math.pow(b[0]-a[0], 2) + Math.pow(b[1]-a[1], 2) + error(b)) / b[2]; 
     }
     memo = {};
     child = {};
@@ -72,7 +72,7 @@ var alg = function(source, target, datapoints){
         var best_length = Number.POSITIVE_INFINITY;
         var best_j = null;
         var j;
-        for (j = i+1; j < data.length; j++) { 
+        for (j = i+1; j < data.length && j < i+data.length/max_points ; j++) { 
             var cur_length = shortest(j) + w(i, j);
             if(cur_length < best_length){
                 best_length = cur_length;
@@ -87,7 +87,6 @@ var alg = function(source, target, datapoints){
         return memo[i];
     }
 
-    console.log(shortest(0));
     root = 0;
     path = [data[root]];
     while (root < data.length-1){
@@ -96,4 +95,3 @@ var alg = function(source, target, datapoints){
     }
     return path;
 }
-
