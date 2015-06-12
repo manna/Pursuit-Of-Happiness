@@ -5,6 +5,14 @@ TWITTER_API_KEYS_AND_TOKENS > keys.txt
 
 Use 'iPython Notebook *.ipynb' in shell to open the Notebook. We used the notebooks to prototype and adapted the historical_tweets.py to run on a Linode to actively collect tweets. 
 
+How to run a script on the a Linode instance:
+1) set up your instance with Ubuntu 14.01
+2) SCP the script and the requirements.txt file to the Linode (or use WinSCP if you want a GUI)
+3) SSH in (via putty on windows) install the dependancies with "pip install -r requirements.txt" 
+4) troubleshoot any issues
+5) run "nohup python historical_tweets.py $" it stands for NO Hang UP, its cool
+
+
 You will need to make sure a AWS database is setup and your IP address is included as "allowed" in order to save to a database. 
 
 Use MySQL Workbench to make your life generally better.
